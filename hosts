@@ -1,0 +1,9 @@
+[personal]
+localhost           ansible_connection=local
+
+[work]
+localhost           ansible_connection=local
+
+[personal_work:children]
+personal
+work
