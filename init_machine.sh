@@ -12,4 +12,4 @@ CONFIG_DIR=~/.config/chrismcgehee/.config_machine
 mkdir -p $CONFIG_DIR
 git clone https://github.com/chrismcgehee/.config_machine.git $CONFIG_DIR
 cd $CONFIG_DIR
-ls playbooks/ | xargs -I{} sudo ansible-playbook -i hosts --ask-become-pass playbooks/{}
+ls playbooks/ | xargs -I{} sudo ansible-playbook -i hosts playbooks/{}

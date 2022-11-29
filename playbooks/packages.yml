@@ -4,11 +4,12 @@
 
     tasks:
       - apt:
-          - gcc
-          - g++
-          - jq
-          - make
-          - tree
+          name:
+            - gcc
+            - g++
+            - jq
+            - make
+            - tree
 
       - snap:
           name: code
