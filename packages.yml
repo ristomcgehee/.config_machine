@@ -1,0 +1,20 @@
+---
+  - name: "Install packages for all"
+    hosts: all
+
+    tasks:
+      - apt:
+          name: gcc
+          state: present
+      - apt:
+          name: g++
+          state: present
+      - apt:
+          name: jq
+          state: present
+      - apt:
+          name: make
+          state: present
+      - apt:
+          name: tree
+          state: present
