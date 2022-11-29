@@ -1,6 +1,7 @@
 ---
   - name: "Install packages for all"
     hosts: all
+    become: yes
 
     tasks:
       - apt:

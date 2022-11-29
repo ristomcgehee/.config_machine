@@ -8,6 +8,8 @@ sudo apt-get install - y \
     python3-pip
 sudo pip3 install ansible
 
-mkdir -p ~/.config/chrismcgehee/.config_machine
-git clone https://github.com/chrismcgehee/.config_machine.git ~/.config/chrismcgehee/.config_machine
-
+CONFIG_DIR=~/.config/chrismcgehee/.config_machine
+mkdir -p $CONFIG_DIR
+git clone https://github.com/chrismcgehee/.config_machine.git $CONFIG_DIR
+cd $CONFIG_DIR
+ls playbooks/ | xargs -I{} ansible-playbook -i hosts playbooks/{}
