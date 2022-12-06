@@ -19,9 +19,9 @@ for asset in latest_release['assets']:
 
 # Download the release
 r = requests.get(download_url, allow_redirects=True)
-tarfile = f'{repo_name}.tar.gz'
-open(tarfile, 'wb').write(r.content)
-tar = tarfile.open(tarfile, 'r:gz')
+tarball = f'{repo_name}.tar.gz'
+open(tarball, 'wb').write(r.content)
+tar = tarfile.open(tarball, 'r:gz')
 tar.extractall()
 tar.close()
-os.remove(tarfile)
+os.remove(tarball)
