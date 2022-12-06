@@ -45,11 +45,20 @@
         script: download_latest_github_release.py chrismcgehee lyncser
         args:
           creates: /usr/local/bin/lyncser
+          chdir: /tmp/install-lynser
       - name: "Install lyncser"
-        shell: lyncser_*/install/install.sh
+        shell: install/install.sh
         args:
           creates: /usr/local/bin/lyncser
-      
+          chdir: /tmp/install-lynser
+      - name: "Configure lyncser"
+        script: write_lyncser_config.py
+        args:
+          creates: "{{ lookup('env', 'HOME') }}/.config/lyncser/token.json"
+      - name: "Run lyncser"
+        shell: lyncser sync && lyncser sync
+        args:
+          creates: "{{ lookup('env', 'HOME') }}/.config/lyncser/globalConfig.yaml"
 
       - name: "Install go"
         shell: 
@@ -59,9 +68,10 @@
           ln -s $HOME/.go $HOME/go
         args:
           creates: /usr/local/go/bin
+          chdir: /tmp/install-go
       
       - name: "Install curlie"
-        shell: go install github.com/rs/curlie@latest && ln -s $HOME/.go/bin/curlie /usr/local/bin/curlie
+        shell: go install github.com/rs/curlie@latest
         args:
-          creates: /usr/local/bin/curlie
+          creates: "{{ lookup('env', 'HOME') }}/.go/bin/curlie
 
