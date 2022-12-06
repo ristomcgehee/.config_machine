@@ -7,3 +7,7 @@ curl https://raw.githubusercontent.com/chrismcgehee/.config_machine/main/init_ma
 ```
 curl https://raw.githubusercontent.com/chrismcgehee/.config_machine/main/update_machine.sh | bash
 ```
+
+### todo
+virtualbox
+delta
