@@ -14,7 +14,7 @@
       - snap:
           name: code
           classic: yes
----
+
   - name: "Install packages for personal_work"
     hosts: personal_work
 
