@@ -5,10 +5,14 @@ import os
 import requests
 import sys
 import tarfile
+import tempfile
 
 # Get the repo owner and name from CLI arguments
 repo_owner = sys.argv[1]
 repo_name = sys.argv[2]
+
+tempdir = tempfile.mkdtemp()
+os.chdir(tempdir)
 
 latest_release = requests.get(f'https://api.github.com/repos/{repo_owner}/{repo_name}/releases/latest').json()
 # Find the latest Linux amd64 release
