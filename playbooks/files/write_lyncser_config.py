@@ -9,7 +9,7 @@ import subprocess
 def run(cmd):
     return subprocess.run(cmd, shell=True, check=True, capture_output=True).stdout.decode('utf-8').strip()
 
-home_dir = os.path.expanduser('~' . run('logname'))
+home_dir = os.path.expanduser('~' + run('logname'))
 os.chdir(home_dir)
 lyncser_json_base64 = os.environ['LYNCSER_JSON_BASE64']
 lyncser_json = base64.b64decode(lyncser_json_base64).decode('utf-8')
