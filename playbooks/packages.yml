@@ -40,6 +40,16 @@
         shell: curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
         args:
           creates: /usr/local/bin/mcfly
+      
+      - name: "Download lyncser"
+        script: download_latest_github_release.py
+        args:
+          creates: /usr/local/bin/lyncser
+      - name: "Install lyncser"
+        shell: lyncser_*/install/install.sh
+        args:
+          creates: /usr/local/bin/lyncser
+      
 
       - name: "Install go"
         shell: 
@@ -55,3 +65,4 @@
         args:
           creates: /usr/local/bin/curlie
 
+      - name: 
