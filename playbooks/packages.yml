@@ -42,7 +42,16 @@
           creates: /usr/local/bin/mcfly
 
       - name: "Install go"
-        shell: wget "https://dl.google.com/go/$(wget -O - https://golang.org/VERSION?m=text).linux-amd64.tar.gz" && tar -C /usr/local -xzf ./*.linux-amd64.tar.gz
+        shell: 
+          wget "https://dl.google.com/go/$(wget -O - https://golang.org/VERSION?m=text).linux-amd64.tar.gz"
+          tar -C /usr/local -xzf ./*.linux-amd64.tar.gz
+          mkdir $HOME/.go
+          ln -s $HOME/.go $HOME/go
         args:
           creates: /usr/local/go/bin
+      
+      - name: "Install curlie"
+        shell: go install github.com/rs/curlie@latest && ln -s $HOME/.go/bin/curlie /usr/local/bin/curlie
+        args:
+          creates: /usr/local/bin/curlie
 
