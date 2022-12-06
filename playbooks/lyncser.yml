@@ -1,0 +1,29 @@
+---
+  - name: "Install and run lyncser"
+    hosts: personal_work
+    vars_prompt:
+    - name: LYNCSER_JSON_BASE64
+      prompt: Enter Lyncser JSON Base64
+
+    tasks:
+      - name: "Download lyncser"
+        script: download_latest_github_release.py chrismcgehee lyncser
+        args:
+          creates: /usr/local/bin/lyncser
+          chdir: /tmp
+      - name: "Install lyncser"
+        shell: install/install.sh
+        args:
+          creates: /usr/local/bin/lyncser
+          chdir: /tmp
+      - name: "Configure lyncser"
+        script: write_lyncser_config.py
+        args:
+          creates: "{{ lookup('env', 'HOME') }}/.config/lyncser/token.json"
+          environment:
+            LYNCSER_JSON_BASE64: "{{ LYNCSER_JSON_BASE64 }}"
+      - name: "Run lyncser"
+        shell: lyncser sync && lyncser sync
+        args:
+          creates: "{{ lookup('env', 'HOME') }}/.config/lyncser/globalConfig.yaml"
+

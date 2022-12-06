@@ -40,25 +40,6 @@
         shell: curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
         args:
           creates: /usr/local/bin/mcfly
-      
-      - name: "Download lyncser"
-        script: download_latest_github_release.py chrismcgehee lyncser
-        args:
-          creates: /usr/local/bin/lyncser
-          chdir: /tmp
-      - name: "Install lyncser"
-        shell: install/install.sh
-        args:
-          creates: /usr/local/bin/lyncser
-          chdir: /tmp
-      - name: "Configure lyncser"
-        script: write_lyncser_config.py
-        args:
-          creates: "{{ lookup('env', 'HOME') }}/.config/lyncser/token.json"
-      - name: "Run lyncser"
-        shell: lyncser sync && lyncser sync
-        args:
-          creates: "{{ lookup('env', 'HOME') }}/.config/lyncser/globalConfig.yaml"
 
       - name: "Install go"
         shell: 
