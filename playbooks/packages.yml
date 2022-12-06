@@ -65,4 +65,3 @@
         args:
           creates: /usr/local/bin/curlie
 
-      - name: 
