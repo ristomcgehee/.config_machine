@@ -45,12 +45,12 @@
         script: download_latest_github_release.py chrismcgehee lyncser
         args:
           creates: /usr/local/bin/lyncser
-          chdir: /tmp/install-lynser
+          chdir: /tmp
       - name: "Install lyncser"
         shell: install/install.sh
         args:
           creates: /usr/local/bin/lyncser
-          chdir: /tmp/install-lynser
+          chdir: /tmp
       - name: "Configure lyncser"
         script: write_lyncser_config.py
         args:
@@ -68,7 +68,7 @@
           ln -s $HOME/.go $HOME/go
         args:
           creates: /usr/local/go/bin
-          chdir: /tmp/install-go
+          chdir: /tmp
       
       - name: "Install curlie"
         shell: go install github.com/rs/curlie@latest
