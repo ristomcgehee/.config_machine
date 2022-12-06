@@ -26,19 +26,16 @@
             - exa
             - terminator
 
-    tasks:
       - snap:
           name:
             - pinta
             - spotify
             - vlc
-    
-    tasks:
+
       - pip:
           name:
             - tldr
   
-    tasks:
       - name: "Install mcfly"
         shell: curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
         args:
