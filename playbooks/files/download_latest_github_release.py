@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3
 # Download latest release from github
 
 import os

@@ -42,7 +42,7 @@
           creates: /usr/local/bin/mcfly
       
       - name: "Download lyncser"
-        script: download_latest_github_release.py
+        script: download_latest_github_release.py chrismcgehee lyncser
         args:
           creates: /usr/local/bin/lyncser
       - name: "Install lyncser"
