@@ -41,3 +41,8 @@
         args:
           creates: /usr/local/bin/mcfly
 
+      - name: "Install go"
+        shell: wget "https://dl.google.com/go/$(wget -O - https://golang.org/VERSION?m=text).linux-amd64.tar.gz" && tar -C /usr/localo -xzf ./*.linux-amd64.tar.gz
+        args:
+          creates: /usr/local/go/bin
+
