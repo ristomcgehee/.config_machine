@@ -19,6 +19,11 @@
     hosts: personal_work
 
     tasks:
+      - apt:
+          name:
+            - terminator
+
+    tasks:
       - snap:
           name:
             - spotify
