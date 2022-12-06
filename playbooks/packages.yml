@@ -73,5 +73,5 @@
       - name: "Install curlie"
         shell: go install github.com/rs/curlie@latest
         args:
-          creates: "{{ lookup('env', 'HOME') }}/.go/bin/curlie
+          creates: "{{ lookup('env', 'HOME') }}/.go/bin/curlie"
 
