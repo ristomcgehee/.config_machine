@@ -32,6 +32,11 @@
             - pinta
             - spotify
             - vlc
+    
+    tasks:
+      - pip:
+          name:
+            - tldr
   
     tasks:
       - name: "Install mcfly"
