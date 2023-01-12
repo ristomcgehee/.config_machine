@@ -11,8 +11,8 @@ import tempfile
 repo_owner = sys.argv[1]
 repo_name = sys.argv[2]
 
-tempdir = tempfile.mkdtemp()
-os.chdir(tempdir)
+# tempdir = tempfile.mkdtemp()
+# os.chdir(tempdir)
 
 latest_release = requests.get(f'https://api.github.com/repos/{repo_owner}/{repo_name}/releases/latest').json()
 # Find the latest Linux amd64 release
