@@ -7,3 +7,9 @@ localhost           ansible_connection=local
 [personal_work:children]
 personal
 work
+
+[all_gui]
+localhost
+
+[codespaces]
+localhost

@@ -1,63 +1,63 @@
----
-  - name: "Install packages for all"
-    hosts: all
+# ---
+#   - name: "Install packages for all"
+#     hosts: all
 
-    tasks:
-      - apt:
-          name:
-            - bat
-            - exa
-            - gcc
-            - g++
-            - jq
-            - make
-            - tree
+#     tasks:
+#       - apt:
+#           name:
+#             - bat
+#             - exa
+#             - gcc
+#             - g++
+#             - jq
+#             - make
+#             - tree
 
-      - pip:
-          name:
-            - tldr
+#       - pip:
+#           name:
+#             - tldr
       
-      - name: "Install mcfly"
-        shell: curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
-        args:
-          creates: /usr/local/bin/mcfly
+#       - name: "Install mcfly"
+#         shell: curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
+#         args:
+#           creates: /usr/local/bin/mcfly
 
-      - name: "Install go"
-        shell: 
-          wget "https://dl.google.com/go/$(wget -O - https://golang.org/VERSION?m=text).linux-amd64.tar.gz"
-          tar -C /usr/local -xzf ./*.linux-amd64.tar.gz
-          mkdir $HOME/.go
-          ln -s $HOME/.go $HOME/go
-        args:
-          creates: /usr/local/go/bin
-          chdir: /tmp
+#       - name: "Install go"
+#         shell: 
+#           wget "https://dl.google.com/go/$(wget -O - https://golang.org/VERSION?m=text).linux-amd64.tar.gz"
+#           tar -C /usr/local -xzf ./*.linux-amd64.tar.gz
+#           mkdir $HOME/.go
+#           ln -s $HOME/.go $HOME/go
+#         args:
+#           creates: /usr/local/go/bin
+#           chdir: /tmp
       
-      - name: "Install curlie"
-        shell: go install github.com/rs/curlie@latest
-        args:
-          creates: "{{ lookup('env', 'HOME') }}/.go/bin/curlie"
+#       - name: "Install curlie"
+#         shell: go install github.com/rs/curlie@latest
+#         args:
+#           creates: "{{ lookup('env', 'HOME') }}/.go/bin/curlie"
 
 
-  - name: "Anything with GUI"
-    hosts: all_gui
+#   - name: "Anything with GUI"
+#     hosts: all_gui
 
-    tasks:
-      - snap:
-          name: code
-          classic: yes
+#     tasks:
+#       - snap:
+#           name: code
+#           classic: yes
 
 
-  - name: "Install packages for personal_work"
-    hosts: personal, work
+#   - name: "Install packages for personal_work"
+#     hosts: personal, work
 
-    tasks:
-      - apt:
-          name:
-            - copyq
-            - terminator
+#     tasks:
+#       - apt:
+#           name:
+#             - copyq
+#             - terminator
 
-      - snap:
-          name:
-            - pinta
-            - spotify
-            - vlc
+#       - snap:
+#           name:
+#             - pinta
+#             - spotify
+#             - vlc
