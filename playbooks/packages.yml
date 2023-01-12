@@ -5,37 +5,18 @@
     tasks:
       - apt:
           name:
+            - bat
+            - exa
             - gcc
             - g++
             - jq
             - make
             - tree
 
-      - snap:
-          name: code
-          classic: yes
-
-  - name: "Install packages for personal_work"
-    hosts: personal_work
-
-    tasks:
-      - apt:
-          name:
-            - bat
-            - copyq
-            - exa
-            - terminator
-
-      - snap:
-          name:
-            - pinta
-            - spotify
-            - vlc
-
       - pip:
           name:
             - tldr
-  
+      
       - name: "Install mcfly"
         shell: curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
         args:
@@ -56,3 +37,27 @@
         args:
           creates: "{{ lookup('env', 'HOME') }}/.go/bin/curlie"
 
+
+  - name: "Anything with GUI"
+    hosts: all_gui
+
+    tasks:
+      - snap:
+          name: code
+          classic: yes
+
+
+  - name: "Install packages for personal_work"
+    hosts: personal, work
+
+    tasks:
+      - apt:
+          name:
+            - copyq
+            - terminator
+
+      - snap:
+          name:
+            - pinta
+            - spotify
+            - vlc

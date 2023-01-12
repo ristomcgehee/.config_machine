@@ -8,8 +8,8 @@ sudo apt-get install - y \
     python3-pip
 sudo pip3 install ansible
 
-CONFIG_DIR=~/.config/chrismcgehee/.config_machine
+CONFIG_DIR=~/.config/ristomcgehee/.config_machine
 mkdir -p $CONFIG_DIR
-git clone https://github.com/chrismcgehee/.config_machine.git $CONFIG_DIR
+git clone https://github.com/ristomcgehee/.config_machine.git $CONFIG_DIR
 cd $CONFIG_DIR
 ./execute_playbooks.sh
