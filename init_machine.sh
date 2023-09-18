@@ -12,4 +12,4 @@ CONFIG_DIR=~/.config/ristomcgehee/.config_machine
 mkdir -p $CONFIG_DIR
 git clone https://github.com/ristomcgehee/.config_machine.git $CONFIG_DIR
 cd $CONFIG_DIR
-./execute_playbooks.sh
+./execute_playbooks.sh hosts
