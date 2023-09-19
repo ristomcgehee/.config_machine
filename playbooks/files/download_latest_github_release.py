@@ -17,7 +17,7 @@ repo_name = sys.argv[2]
 latest_release = requests.get(f'https://api.github.com/repos/{repo_owner}/{repo_name}/releases/latest').json()
 # Find the latest Linux amd64 release
 for asset in latest_release['assets']:
-    if asset['name'].endswith('amd64.tar.gz'):
+    if asset['name'].endswith('linux_amd64.tar.gz'):
         download_url = asset['browser_download_url']
         break
 
